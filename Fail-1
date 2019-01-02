@@ -1,0 +1,15 @@
+#Johnathan Zhao
+#Root Finding 1
+    
+def f(input):
+    input=0
+    while(input<6):
+        output=(-1.278*input*input)+(5.926*input)-2.771
+        return output
+        input+=0.001
+    if(output==0):
+        print(input)
+    
+
+print(f(input))
+
