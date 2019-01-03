@@ -1,15 +1,16 @@
 #Johnathan Zhao
 #Root Finding 1
     
-def f(input):
-    input=0
-    while(input<6):
-        output=(-1.278*input*input)+(5.926*input)-2.771
-        return output
-        input+=0.001
-    if(output==0):
-        print(input)
-    
+def f(inp):
+    L=[]
+    while(inp<6):
+        output=(-1.278*inp*inp)+(5.926*inp)-2.771
+        L.append(output)
+        inp+=0.001
+    for i in range(len(L)):
+        if(L[i-2]*L[i-1]<0 and L[i+1]*L[i+2]>0):
+            return L[i]
 
-print(f(input))
+inp=0
+print(f(inp))
 
