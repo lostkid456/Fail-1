@@ -1,0 +1,20 @@
+#Johnathan Zhao
+#Python Task-Semester 1 Final
+
+f(input):
+    while(inp<endInterval and inp>startInterval):
+        output=-1.278*input*input+5.926*input-2.771
+        return output
+
+startInterval=input("Choose the starting number for the interval you want to find a root.")
+endInterval=input("Choose the end number for the interval you want to find a root.")
+try:
+    startInterval>endInterval
+except ValueError:
+    print("Input start interval and end interval agian with start interval less than end interval.")
+    startInterval=input("Choose the starting number for the interval you want to find a root.")
+    endInterval=input("Choose the end number for the interval you want to find a root.")
+
+    
+
+
