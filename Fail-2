@@ -11,21 +11,17 @@ def f(input):
     
 L=[]
 stepSize=0.001
+count=0
+inp=(startInterval)/2
 
-inp=startInterval/2
-inp2=startInterval/2
-
-while(inp<=endInterval):
-    if f(inp-stepSize)*f(inp)<0 and f(inp)*f(inp+stepSize)>0 :
-        L.append(inp)
-    inp=inp+stepSize
+while(inp<=endInterval or inp>=startInterval):
+    temp=f(inp)
+    if -f(inp+stepSize)>-f(inp-Stepsize):
+        inp=inp/2
+        temp=f(inp)
+        if(f(inp)
 print(L)
 
-while(inp2>=startInterval):
-    if f(inp-stepSize)*f(inp)<0 and f(inp)*f(inp+stepSize)>0 :
-        L.append(inp)
-    inp=inp-stepSize
-print(L)
 
 
 
@@ -38,4 +34,3 @@ print(L)
 
 
     
-
