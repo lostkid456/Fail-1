@@ -1,25 +1,31 @@
 #Johnathan Zhao
 #Python Task-Semester 1 Final
 
-startInterval=int(input("Choose the starting number for the interval you want to find a root."))
-endInterval=int(input("Choose the end number for the interval you want to find a root."))
+
+startInterval=input("Choose the starting number for the interval you want to find a root.")
+endInterval=input("Choose the end number for the interval you want to find a root.")
 
 def f(input):
-    while(inp<endInterval):
+    while(inp<float(endInterval)):
         output=-1.278*input*input+5.926*input-2.771
         return output
     
 L=[]
 stepSize=0.001
-count=0
-inp=(startInterval)/2
+num_steps=0
+inp=(float(startInterval))/2
 
-while(inp<=endInterval or inp>=startInterval):
+while(True):
     temp=f(inp)
-    if -f(inp+stepSize)>-f(inp-Stepsize):
+    if -f(inp+stepSize)>-f(inp-stepSize):
         inp=inp/2
         temp=f(inp)
-        if(f(inp)
+        if(temp!=0):
+            inp=inp/2
+            temp=f(inp)
+        else:
+             False 
+             L.append(f(inp))
 print(L)
 
 
