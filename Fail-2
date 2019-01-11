@@ -6,26 +6,34 @@ startInterval=input("Choose the starting number for the interval you want to fin
 endInterval=input("Choose the end number for the interval you want to find a root.")
 
 def f(input):
-    while(inp<float(endInterval)):
+    while(inp<endInterval):
         output=-1.278*input*input+5.926*input-2.771
         return output
-    
+
+
 L=[]
 stepSize=0.001
 num_steps=0
-inp=(float(startInterval))/2
+inp=(startInterval)/2
+temp=inp
+count=0
 
-while(True):
-    temp=f(inp)
-    if -f(inp+stepSize)>-f(inp-stepSize):
+if(f(startInterval)==0):
+    L.append(startInterval)
+if(f(endInterval)==0):
+    L.append(endInterval)
+while(count<20):
+    if(f(temp)==0):
+        L.append(f(temp))
+        count+=1
+    else:
         inp=inp/2
-        temp=f(inp)
-        if(temp!=0):
+        if(-f(inp)<-temp):
+            temp=inp
             inp=inp/2
-            temp=f(inp)
-        else:
-             False 
-             L.append(f(inp))
+            count+=1
+
+     
 print(L)
 
 
