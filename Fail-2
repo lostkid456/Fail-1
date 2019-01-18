@@ -6,7 +6,7 @@ startInterval=float(input("Choose the starting number for the interval you want 
 endInterval=float(input("Choose the end number for the interval you want to find a root."))
 
 def f(input):
-    output= -1.278*input*input + 5.926*input - 2.771
+    output= -1.599*input*input -2.718*input +5.245
     return output
 
 distance=endInterval-startInterval
@@ -19,15 +19,13 @@ minStepSize=0.00001
 
 while(not endInterval-startInterval<tolerance):
     temp=f(startInterval)
-    #print(f(startInterval),stepSize)
+    #print(f(startInterval),startInterval,stepSize)
     if(math.fabs(f(startInterval))<tolerance):
-        if(stepSize<minStepSize):
-            L.append(startInterval)
+        L.append(startInterval)
     startInterval+=stepSize
     num_steps+=1
-    
     if(temp*f(startInterval)<0):
-        stepSize=stepSize/2
+        stepSize=-(stepSize/2)+tolerance
     num_steps+=1
 
 
