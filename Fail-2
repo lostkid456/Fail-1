@@ -1,32 +1,61 @@
 #Johnathan Zhao
 #Python Task-Semester 1 Final
 
-import math 
+import math
+
+#input the starting point and ending point of the interval you want to find roots in
 startInterval=float(input("Choose the starting number for the interval you want to find a root."))
 endInterval=float(input("Choose the end number for the interval you want to find a root."))
 
+#The function you want to estiamte the roots from 
 def f(input):
-    output= -1.599*input*input -2.718*input +5.245
+    output=((input - 2.1)**2)*((input - 2.2)**2)
     return output
 
+#conpute interval length
 distance=endInterval-startInterval
-L=[]
-stepSize=distance/1000
-tolerance=0.001
-num_steps=0
-temp=0
-minStepSize=0.00001
 
+#empty list for our roots 
+L=[]
+
+#We will have this be the maximum distance for a y-coordinate to be called a root 
+tolerance=0.001
+
+#stepsize is based on the interval given 
+stepSize=distance*tolerance
+
+#variable for the number of steps we will take to get the roots  
+num_steps=0
+
+#This is a tempoarary variable that will store the y-value of the function before adding the step-size 
+temp=0
+
+#Goes through the entire interval as a naiive search
+#Searches until the distance between the x-value becomes less than the tolerance value 
 while(not endInterval-startInterval<tolerance):
+    
+    #the variable that will store the y-value before adding on the step-size
     temp=f(startInterval)
+    
     #print(f(startInterval),startInterval,stepSize)
+    #if the ditance of the y-value from the x-axis is less than the tolerance level
+    #we will consider this a root 
     if(math.fabs(f(startInterval))<tolerance):
         L.append(startInterval)
-    startInterval+=stepSize
-    num_steps+=1
+
+    #adds on step-size to the x-value
+    #if the function is increasing 
+    if(temp*f(startInterval)>0):
+       startInterval+=stepSize
+
+    num_steps+=3
+
+    #if there is a sign change detected
+    #it will cut the step size plus the tolerance in half and then reverse in direction to check if there is a root
+    #step size plus tolerance allows the program to not loop infinitely 
     if(temp*f(startInterval)<0):
-        stepSize=-(stepSize/2)+tolerance
-    num_steps+=1
+        stepSize=-(stepSize/2)+(tolerance/2)
+    num_steps+=2
 
 
 print(L)
